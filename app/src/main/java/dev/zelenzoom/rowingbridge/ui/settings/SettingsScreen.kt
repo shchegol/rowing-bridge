@@ -160,15 +160,20 @@ private fun LanguageSelect(currentLanguageTag: String?, onLanguageChange: (Strin
     val currentLabel = options.firstOrNull { it.first == currentLanguageTag }?.second ?: options[0].second
 
     Box(modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp)) {
-        OutlinedButton(onClick = { expanded = true }, modifier = Modifier.fillMaxWidth()) {
+        OutlinedButton(onClick = { expanded = true }, modifier = Modifier.fillMaxWidth().height(56.dp)) {
             Text(currentLabel, modifier = Modifier.weight(1f))
             Icon(Icons.Filled.ArrowDropDown, contentDescription = null)
         }
-        DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+        DropdownMenu(
+            expanded = expanded,
+            onDismissRequest = { expanded = false },
+            modifier = Modifier.fillMaxWidth(),
+        ) {
             options.forEach { (tag, label) ->
                 DropdownMenuItem(
                     text = { Text(label) },
                     onClick = { onLanguageChange(tag); expanded = false },
+                    modifier = Modifier.fillMaxWidth().height(56.dp),
                 )
             }
         }

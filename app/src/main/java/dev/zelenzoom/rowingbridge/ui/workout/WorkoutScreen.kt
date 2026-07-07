@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -16,9 +17,9 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.BluetoothSearching
 import androidx.compose.material.icons.filled.Bluetooth
 import androidx.compose.material.icons.filled.BluetoothConnected
-import androidx.compose.material.icons.filled.BluetoothSearching
 import androidx.compose.material.icons.filled.Bolt
 import androidx.compose.material.icons.filled.DeleteOutline
 import androidx.compose.material.icons.filled.Favorite
@@ -42,7 +43,6 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -139,7 +139,8 @@ fun WorkoutScreen(
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.fillMaxWidth().padding(vertical = 6.dp),
                 ) {
-                    Icon(field.icon, contentDescription = null, tint = MaterialTheme.colorScheme.outline, modifier = Modifier.width(28.dp))
+                    Icon(field.icon, contentDescription = null, tint = MaterialTheme.colorScheme.outline, modifier = Modifier.size(22.dp))
+                    Spacer(modifier = Modifier.width(16.dp))
                     Text(text = field.label, style = MaterialTheme.typography.bodyMedium, modifier = Modifier.weight(1f))
                     Text(text = field.value, style = MaterialTheme.typography.bodyMedium)
                 }
@@ -173,8 +174,8 @@ fun WorkoutScreen(
                             onClick = onResume,
                             modifier = Modifier.fillMaxWidth(),
                             colors = ButtonDefaults.buttonColors(
-                                containerColor = MaterialTheme.colorScheme.primary,
-                                contentColor = MaterialTheme.colorScheme.onPrimary,
+                                containerColor = MaterialTheme.colorScheme.tertiary,
+                                contentColor = Color.White,
                             ),
                         ) {
                             Icon(Icons.Filled.PlayArrow, contentDescription = null)
@@ -182,16 +183,26 @@ fun WorkoutScreen(
                             Text(stringResource(R.string.button_resume))
                         }
                         Spacer(modifier = Modifier.height(8.dp))
-                        Button(onClick = onSave, modifier = Modifier.fillMaxWidth()) {
+                        Button(
+                            onClick = onSave,
+                            modifier = Modifier.fillMaxWidth(),
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = MaterialTheme.colorScheme.primary,
+                                contentColor = Color.White,
+                            ),
+                        ) {
                             Icon(Icons.Filled.Save, contentDescription = null)
                             Spacer(modifier = Modifier.width(8.dp))
                             Text(stringResource(R.string.button_save))
                         }
                         Spacer(modifier = Modifier.height(8.dp))
-                        OutlinedButton(
+                        Button(
                             onClick = { showDiscardConfirm = true },
                             modifier = Modifier.fillMaxWidth(),
-                            colors = ButtonDefaults.outlinedButtonColors(contentColor = MaterialTheme.colorScheme.error),
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = MaterialTheme.colorScheme.error,
+                                contentColor = Color.White,
+                            ),
                         ) {
                             Icon(Icons.Filled.DeleteOutline, contentDescription = null)
                             Spacer(modifier = Modifier.width(8.dp))
@@ -266,7 +277,7 @@ private fun ConnectionBadge(label: String, state: BleConnectionState, extra: Str
     val (icon, color) = when (state) {
         BleConnectionState.Connected -> Icons.Filled.BluetoothConnected to MaterialTheme.colorScheme.primary
         BleConnectionState.Connecting -> Icons.Filled.Bluetooth to MaterialTheme.colorScheme.secondary
-        BleConnectionState.Scanning -> Icons.Filled.BluetoothSearching to MaterialTheme.colorScheme.outline
+        BleConnectionState.Scanning -> Icons.AutoMirrored.Filled.BluetoothSearching to MaterialTheme.colorScheme.outline
         BleConnectionState.Disconnected -> Icons.Filled.Bluetooth to MaterialTheme.colorScheme.outline
     }
     Row(verticalAlignment = Alignment.CenterVertically) {
