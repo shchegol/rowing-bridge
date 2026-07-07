@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -109,7 +110,7 @@ fun WorkoutScreen(
             item {
                 Card(
                     modifier = Modifier.fillMaxWidth().padding(top = 16.dp),
-                    shape = RoundedCornerShape(4.dp),
+                    shape = RoundedCornerShape(16.dp),
                     colors = CardDefaults.cardColors(
                         containerColor = MaterialTheme.colorScheme.tertiary.copy(alpha = 0.2f),
                         contentColor = MaterialTheme.colorScheme.onSurface,
@@ -259,7 +260,7 @@ private fun StatusBar(
                     color = mainStatusColor(rowerState, workoutState),
                     modifier = Modifier.weight(1f),
                 )
-                IconButton(onClick = onOpenSettings) {
+                IconButton(onClick = onOpenSettings, modifier = Modifier.offset(x = 12.dp)) {
                     Icon(Icons.Filled.Settings, contentDescription = stringResource(R.string.settings_icon_description))
                 }
             }
@@ -306,7 +307,7 @@ private fun PrimaryActionBar(workoutState: WorkoutState, onPrimaryButton: () -> 
         Button(
             onClick = onPrimaryButton,
             enabled = workoutState != WorkoutState.Paused,
-            modifier = Modifier.fillMaxWidth().padding(16.dp).height(56.dp),
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp, vertical = 16.dp).height(56.dp),
             colors = ButtonDefaults.buttonColors(
                 containerColor = if (workoutState == WorkoutState.Recording) {
                     MaterialTheme.colorScheme.secondary
