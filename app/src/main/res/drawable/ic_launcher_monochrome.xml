@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Single-color variant of ic_launcher_foreground for Android 13+ themed icons
-     (system applies its own tint, so fill/stroke colors here are irrelevant). -->
+     (system applies its own tint, so fill colors here are irrelevant - alpha shape only). -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp"
     android:height="108dp"
@@ -8,16 +8,9 @@
     android:viewportHeight="108">
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M37,51 L84,51 L84,57 L37,57 Z" />
+        android:fillType="evenOdd"
+        android:pathData="M24,54 A30,30 0 1 1 84,54 A30,30 0 1 1 24,54 Z M37,54 A17,17 0 1 1 71,54 A17,17 0 1 1 37,54 Z" />
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M70,43 L84,43 L84,51 L70,51 Z" />
-    <path
-        android:strokeColor="#FFFFFF"
-        android:strokeWidth="2.5"
-        android:strokeLineCap="round"
-        android:pathData="M72,47 L50,52" />
-    <path
-        android:fillColor="#FFFFFF"
-        android:pathData="M22,54 A15,15 0 1 1 52,54 A15,15 0 1 1 22,54 Z" />
+        android:pathData="M44,54 A10,10 0 1 1 64,54 A10,10 0 1 1 44,54 Z" />
 </vector>
