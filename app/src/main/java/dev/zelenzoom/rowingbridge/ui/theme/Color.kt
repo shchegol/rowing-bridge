@@ -11,6 +11,10 @@ val Green300 = Color(0xFF81C784)
 val Green700 = Color(0xFF388E3C)
 val Green800 = Color(0xFF2E7D32)
 val Green900 = Color(0xFF1B5E20)
+// "Accent" swatches - pure hue (no red/blue mixed in), much more saturated/
+// vivid than the 700/300 tones above, which read as muted by comparison.
+val GreenA400 = Color(0xFF00E676)
+val GreenA700 = Color(0xFF00C853)
 
 val Orange100 = Color(0xFFFFE0B2)
 val Orange300 = Color(0xFFFFB74D)

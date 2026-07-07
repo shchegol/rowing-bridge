@@ -12,7 +12,7 @@ import androidx.compose.runtime.Composable
 // (see Color.kt) rather than one-off hex constants per screen.
 
 private val LightColors = lightColorScheme(
-    primary = Green700,
+    primary = GreenA700,
     onPrimary = White,
     primaryContainer = Green100,
     onPrimaryContainer = Green900,
@@ -31,7 +31,7 @@ private val LightColors = lightColorScheme(
 )
 
 private val DarkColors = darkColorScheme(
-    primary = Green300,
+    primary = GreenA400,
     onPrimary = Green900,
     primaryContainer = Green800,
     onPrimaryContainer = Green100,
