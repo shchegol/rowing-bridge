@@ -1,0 +1,90 @@
+<resources>
+    <!-- Connect screen -->
+    <string name="permission_rationale">Rowing Bridge нужно разрешение на Bluetooth, чтобы найти ваш гребной тренажёр.</string>
+    <string name="grant_permission">Предоставить разрешение</string>
+
+    <!-- Status -->
+    <string name="status_paused">ПАУЗА</string>
+    <string name="status_recording">ЗАПИСЬ</string>
+    <string name="status_connected">ПОДКЛЮЧЕНО</string>
+    <string name="status_connecting">ПОДКЛЮЧЕНИЕ…</string>
+    <string name="status_searching">ПОИСК…</string>
+    <string name="status_rower_lost_suffix"> — ТРЕНАЖЁР ПОТЕРЯН, ПЕРЕПОДКЛЮЧЕНИЕ…</string>
+
+    <!-- Connection badges -->
+    <string name="badge_rower">Тренажёр</string>
+    <string name="badge_hr">Пульс</string>
+    <string name="badge_bpm_format">%1$d уд/мин</string>
+    <string name="connection_state_connected">Подключено</string>
+    <string name="connection_state_connecting">Подключение</string>
+    <string name="connection_state_scanning">Поиск</string>
+    <string name="connection_state_disconnected">Отключено</string>
+
+    <!-- Main tiles -->
+    <string name="tile_spm">ГРЕБ/МИН</string>
+    <string name="tile_time">ВРЕМЯ</string>
+    <string name="tile_pace">/500М</string>
+    <string name="tile_distance">ДИСТ М</string>
+
+    <!-- Primary button -->
+    <string name="button_start">Начать запись</string>
+    <string name="button_stop">Стоп</string>
+    <string name="button_paused">Пауза</string>
+
+    <!-- Other live data -->
+    <string name="section_other_live_data">Остальные данные</string>
+    <string name="field_not_sent">не передаётся</string>
+    <string name="field_heart_rate">Пульс (уд/мин)</string>
+    <string name="field_stroke_count">Количество гребков</string>
+    <string name="field_instant_power">Мгновенная мощность (Вт)</string>
+    <string name="field_total_energy">Всего калорий (ккал)</string>
+    <string name="field_device_elapsed_time">Время с тренажёра (с)</string>
+
+    <!-- Paused dialog -->
+    <string name="dialog_workout_paused_title">Тренировка на паузе</string>
+    <string name="button_resume">Продолжить</string>
+    <string name="button_save">Сохранить</string>
+    <string name="button_discard">Удалить</string>
+
+    <!-- Discard confirm dialog -->
+    <string name="dialog_discard_title">Удалить тренировку?</string>
+    <string name="button_cancel">Отмена</string>
+
+    <!-- Saved dialog -->
+    <string name="dialog_workout_saved_title">Тренировка сохранена</string>
+    <string name="button_ok">ОК</string>
+    <string name="saved_time">Время</string>
+    <string name="saved_distance">Дистанция (м)</string>
+    <string name="saved_strokes">Гребки</string>
+    <string name="saved_calories">Калории (ккал)</string>
+    <string name="saved_avg_stroke_rate">Средний темп (греб/мин)</string>
+    <string name="saved_avg_pace">Средний темп (/500м)</string>
+    <string name="saved_avg_power">Средняя мощность (Вт)</string>
+    <string name="saved_avg_heart_rate">Средний пульс (уд/мин)</string>
+    <string name="saved_max_stroke_rate">Макс. темп (греб/мин)</string>
+    <string name="saved_max_power">Макс. мощность (Вт)</string>
+    <string name="saved_max_heart_rate">Макс. пульс (уд/мин)</string>
+    <string name="saved_device_elapsed_time">Время с тренажёра (с)</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Настройки</string>
+    <string name="settings_icon_description">Настройки</string>
+    <string name="back">Назад</string>
+    <string name="settings_theme_section">Тема</string>
+    <string name="theme_system">Как в системе</string>
+    <string name="theme_light">Светлая</string>
+    <string name="theme_dark">Тёмная</string>
+    <string name="settings_language_section">Язык</string>
+    <string name="language_system">Как в системе</string>
+
+    <!-- Strava -->
+    <string name="settings_strava_section">Strava</string>
+    <string name="strava_connect">Подключить Strava</string>
+    <string name="strava_disconnect">Отключить</string>
+    <string name="strava_connected">Подключено</string>
+    <string name="strava_upload_button">Загрузить в Strava</string>
+    <string name="strava_upload_uploading">Загружаем в Strava…</string>
+    <string name="strava_upload_success">Загружено в Strava</string>
+    <string name="strava_upload_failed">Не удалось загрузить в Strava</string>
+    <string name="strava_not_available">Нужен платный тариф Strava API — пока не подключён</string>
+</resources>

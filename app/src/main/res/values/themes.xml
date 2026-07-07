@@ -1,0 +1,7 @@
+<resources>
+    <!-- Must descend from Theme.AppCompat (or MaterialComponents) - AppCompatActivity
+         requires it (needed for in-app language switching via AppCompatDelegate).
+         This only styles the system window/status bar before Compose takes over;
+         actual UI styling is Material3 via RowingBridgeTheme, not this. -->
+    <style name="Theme.RowingBridge" parent="Theme.AppCompat.DayNight.NoActionBar" />
+</resources>

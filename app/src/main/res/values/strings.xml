@@ -1,0 +1,95 @@
+<resources>
+    <string name="app_name">Rowing Bridge</string>
+
+    <!-- Connect screen -->
+    <string name="permission_rationale">Rowing Bridge needs Bluetooth permission to find your rowing machine.</string>
+    <string name="grant_permission">Grant permission</string>
+
+    <!-- Status -->
+    <string name="status_paused">PAUSED</string>
+    <string name="status_recording">REC</string>
+    <string name="status_connected">CONNECTED</string>
+    <string name="status_connecting">CONNECTING…</string>
+    <string name="status_searching">SEARCHING…</string>
+    <string name="status_rower_lost_suffix"> — ROWER LOST, RECONNECTING…</string>
+
+    <!-- Connection badges -->
+    <string name="badge_rower">Rower</string>
+    <string name="badge_hr">HR</string>
+    <string name="badge_bpm_format">%1$d bpm</string>
+    <string name="connection_state_connected">Connected</string>
+    <string name="connection_state_connecting">Connecting</string>
+    <string name="connection_state_scanning">Scanning</string>
+    <string name="connection_state_disconnected">Disconnected</string>
+
+    <!-- Main tiles -->
+    <string name="tile_spm">SPM</string>
+    <string name="tile_time">TIME</string>
+    <string name="tile_pace">/500m</string>
+    <string name="tile_distance">DIST m</string>
+
+    <!-- Primary button -->
+    <string name="button_start">Start recording</string>
+    <string name="button_stop">Stop</string>
+    <string name="button_paused">Paused</string>
+
+    <!-- Other live data -->
+    <string name="section_other_live_data">Other live data</string>
+    <string name="field_not_sent">not sent</string>
+    <string name="field_heart_rate">Heart rate (bpm)</string>
+    <string name="field_stroke_count">Stroke count</string>
+    <string name="field_instant_power">Instant power (W)</string>
+    <string name="field_total_energy">Total energy (kcal)</string>
+    <string name="field_device_elapsed_time">Elapsed time - device (s)</string>
+
+    <!-- Paused dialog -->
+    <string name="dialog_workout_paused_title">Workout paused</string>
+    <string name="button_resume">Resume</string>
+    <string name="button_save">Save</string>
+    <string name="button_discard">Discard</string>
+
+    <!-- Discard confirm dialog -->
+    <string name="dialog_discard_title">Discard workout?</string>
+    <string name="button_cancel">Cancel</string>
+
+    <!-- Saved dialog -->
+    <string name="dialog_workout_saved_title">Workout saved</string>
+    <string name="button_ok">OK</string>
+    <string name="saved_time">Time</string>
+    <string name="saved_distance">Distance (m)</string>
+    <string name="saved_strokes">Strokes</string>
+    <string name="saved_calories">Calories (kcal)</string>
+    <string name="saved_avg_stroke_rate">Avg stroke rate (spm)</string>
+    <string name="saved_avg_pace">Avg pace (/500m)</string>
+    <string name="saved_avg_power">Avg power (W)</string>
+    <string name="saved_avg_heart_rate">Avg heart rate (bpm)</string>
+    <string name="saved_max_stroke_rate">Max stroke rate (spm)</string>
+    <string name="saved_max_power">Max power (W)</string>
+    <string name="saved_max_heart_rate">Max heart rate (bpm)</string>
+    <string name="saved_device_elapsed_time">Device elapsed time (s)</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_icon_description">Settings</string>
+    <string name="back">Back</string>
+    <string name="settings_theme_section">Theme</string>
+    <string name="theme_system">System default</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+    <string name="settings_language_section">Language</string>
+    <string name="language_system">System default</string>
+    <string name="language_english" translatable="false">English</string>
+    <string name="language_russian" translatable="false">Русский</string>
+    <string name="language_spanish" translatable="false">Español</string>
+
+    <!-- Strava -->
+    <string name="settings_strava_section">Strava</string>
+    <string name="strava_connect">Connect to Strava</string>
+    <string name="strava_disconnect">Disconnect</string>
+    <string name="strava_connected">Connected</string>
+    <string name="strava_upload_button">Upload to Strava</string>
+    <string name="strava_upload_uploading">Uploading to Strava…</string>
+    <string name="strava_upload_success">Uploaded to Strava</string>
+    <string name="strava_upload_failed">Strava upload failed</string>
+    <string name="strava_not_available">Requires a paid Strava API plan - not set up yet</string>
+</resources>

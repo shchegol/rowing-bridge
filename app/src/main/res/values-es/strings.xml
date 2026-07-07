@@ -1,0 +1,90 @@
+<resources>
+    <!-- Connect screen -->
+    <string name="permission_rationale">Rowing Bridge necesita permiso de Bluetooth para encontrar tu máquina de remo.</string>
+    <string name="grant_permission">Conceder permiso</string>
+
+    <!-- Status -->
+    <string name="status_paused">PAUSA</string>
+    <string name="status_recording">GRABANDO</string>
+    <string name="status_connected">CONECTADO</string>
+    <string name="status_connecting">CONECTANDO…</string>
+    <string name="status_searching">BUSCANDO…</string>
+    <string name="status_rower_lost_suffix"> — MÁQUINA PERDIDA, RECONECTANDO…</string>
+
+    <!-- Connection badges -->
+    <string name="badge_rower">Máquina</string>
+    <string name="badge_hr">FC</string>
+    <string name="badge_bpm_format">%1$d ppm</string>
+    <string name="connection_state_connected">Conectado</string>
+    <string name="connection_state_connecting">Conectando</string>
+    <string name="connection_state_scanning">Buscando</string>
+    <string name="connection_state_disconnected">Desconectado</string>
+
+    <!-- Main tiles -->
+    <string name="tile_spm">PPM</string>
+    <string name="tile_time">TIEMPO</string>
+    <string name="tile_pace">/500m</string>
+    <string name="tile_distance">DIST m</string>
+
+    <!-- Primary button -->
+    <string name="button_start">Iniciar grabación</string>
+    <string name="button_stop">Detener</string>
+    <string name="button_paused">Pausado</string>
+
+    <!-- Other live data -->
+    <string name="section_other_live_data">Otros datos en vivo</string>
+    <string name="field_not_sent">no enviado</string>
+    <string name="field_heart_rate">Frecuencia cardíaca (ppm)</string>
+    <string name="field_stroke_count">Número de paladas</string>
+    <string name="field_instant_power">Potencia instantánea (W)</string>
+    <string name="field_total_energy">Energía total (kcal)</string>
+    <string name="field_device_elapsed_time">Tiempo transcurrido - máquina (s)</string>
+
+    <!-- Paused dialog -->
+    <string name="dialog_workout_paused_title">Entrenamiento en pausa</string>
+    <string name="button_resume">Reanudar</string>
+    <string name="button_save">Guardar</string>
+    <string name="button_discard">Descartar</string>
+
+    <!-- Discard confirm dialog -->
+    <string name="dialog_discard_title">¿Descartar entrenamiento?</string>
+    <string name="button_cancel">Cancelar</string>
+
+    <!-- Saved dialog -->
+    <string name="dialog_workout_saved_title">Entrenamiento guardado</string>
+    <string name="button_ok">Aceptar</string>
+    <string name="saved_time">Tiempo</string>
+    <string name="saved_distance">Distancia (m)</string>
+    <string name="saved_strokes">Paladas</string>
+    <string name="saved_calories">Calorías (kcal)</string>
+    <string name="saved_avg_stroke_rate">Ritmo medio (ppm)</string>
+    <string name="saved_avg_pace">Ritmo medio (/500m)</string>
+    <string name="saved_avg_power">Potencia media (W)</string>
+    <string name="saved_avg_heart_rate">Frecuencia cardíaca media (ppm)</string>
+    <string name="saved_max_stroke_rate">Ritmo máx. (ppm)</string>
+    <string name="saved_max_power">Potencia máx. (W)</string>
+    <string name="saved_max_heart_rate">Frecuencia cardíaca máx. (ppm)</string>
+    <string name="saved_device_elapsed_time">Tiempo transcurrido - máquina (s)</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Ajustes</string>
+    <string name="settings_icon_description">Ajustes</string>
+    <string name="back">Atrás</string>
+    <string name="settings_theme_section">Tema</string>
+    <string name="theme_system">Predeterminado del sistema</string>
+    <string name="theme_light">Claro</string>
+    <string name="theme_dark">Oscuro</string>
+    <string name="settings_language_section">Idioma</string>
+    <string name="language_system">Predeterminado del sistema</string>
+
+    <!-- Strava -->
+    <string name="settings_strava_section">Strava</string>
+    <string name="strava_connect">Conectar con Strava</string>
+    <string name="strava_disconnect">Desconectar</string>
+    <string name="strava_connected">Conectado</string>
+    <string name="strava_upload_button">Subir a Strava</string>
+    <string name="strava_upload_uploading">Subiendo a Strava…</string>
+    <string name="strava_upload_success">Subido a Strava</string>
+    <string name="strava_upload_failed">Error al subir a Strava</string>
+    <string name="strava_not_available">Requiere un plan de pago de la API de Strava - aún no configurado</string>
+</resources>
