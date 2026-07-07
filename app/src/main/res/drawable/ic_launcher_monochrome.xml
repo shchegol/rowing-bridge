@@ -1,36 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Side-view rowing ergometer: flywheel, monorail, seat, pull cord. -->
+<!-- Single-color variant of ic_launcher_foreground for Android 13+ themed icons
+     (system applies its own tint, so fill/stroke colors here are irrelevant). -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp"
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
-    <!-- monorail -->
     <path
         android:fillColor="#FFFFFF"
         android:pathData="M37,51 L84,51 L84,57 L37,57 Z" />
-    <!-- seat -->
     <path
         android:fillColor="#FFFFFF"
         android:pathData="M70,43 L84,43 L84,51 L70,51 Z" />
-    <!-- pull cord from seat to flywheel -->
     <path
         android:strokeColor="#FFFFFF"
         android:strokeWidth="2.5"
         android:strokeLineCap="round"
         android:pathData="M72,47 L50,52" />
-    <!-- flywheel -->
-    <path
-        android:fillColor="#4CAF50"
-        android:pathData="M22,54 A15,15 0 1 1 52,54 A15,15 0 1 1 22,54 Z" />
-    <!-- flywheel spokes -->
-    <path
-        android:strokeColor="#FFFFFF"
-        android:strokeWidth="2.5"
-        android:strokeLineCap="round"
-        android:pathData="M37,54 L37,39 M37,54 L24,62 M37,54 L50,62" />
-    <!-- flywheel hub -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M33,54 A4,4 0 1 1 41,54 A4,4 0 1 1 33,54 Z" />
+        android:pathData="M22,54 A15,15 0 1 1 52,54 A15,15 0 1 1 22,54 Z" />
 </vector>
