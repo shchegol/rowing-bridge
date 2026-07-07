@@ -109,9 +109,9 @@ fun WorkoutScreen(
             item {
                 Card(
                     modifier = Modifier.fillMaxWidth().padding(top = 16.dp),
-                    shape = RoundedCornerShape(16.dp),
+                    shape = RoundedCornerShape(4.dp),
                     colors = CardDefaults.cardColors(
-                        containerColor = MaterialTheme.colorScheme.tertiary.copy(alpha = 0.3f),
+                        containerColor = MaterialTheme.colorScheme.tertiary.copy(alpha = 0.2f),
                         contentColor = MaterialTheme.colorScheme.onSurface,
                     ),
                 ) {
