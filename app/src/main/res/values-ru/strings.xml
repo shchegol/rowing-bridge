@@ -87,4 +87,7 @@
     <string name="strava_upload_success">Загружено в Strava</string>
     <string name="strava_upload_failed">Не удалось загрузить в Strava</string>
     <string name="strava_not_available">Нужен платный тариф Strava API — пока не подключён</string>
+
+    <!-- About / version -->
+    <string name="settings_version_format">Версия %1$s (сборка %2$d, %3$s)</string>
 </resources>

@@ -14,6 +14,24 @@ val localProperties = Properties().apply {
     if (file.exists()) file.inputStream().use { load(it) }
 }
 
+// versionCode tracks git commit count, not a hand-maintained number - it can
+// only go up, and it's always obvious which commit produced which build.
+// gitShortSha is exposed separately via BuildConfig for exact traceability
+// (shown in the Settings screen) since versionName only changes on
+// deliberate bumps, not every commit.
+fun runGit(vararg args: String): String = try {
+    val process = ProcessBuilder("git", *args)
+        .directory(rootDir)
+        .redirectErrorStream(true)
+        .start()
+    process.inputStream.bufferedReader().readText().trim().also { process.waitFor() }
+} catch (e: Exception) {
+    ""
+}
+
+val gitCommitCount = runGit("rev-list", "--count", "HEAD").toIntOrNull() ?: 1
+val gitShortSha = runGit("rev-parse", "--short", "HEAD").ifBlank { "unknown" }
+
 android {
     namespace = "dev.zelenzoom.rowingbridge"
     compileSdk = 35
@@ -22,11 +40,12 @@ android {
         applicationId = "dev.zelenzoom.rowingbridge"
         minSdk = 29
         targetSdk = 35
-        versionCode = 1
-        versionName = "0.1"
+        versionCode = gitCommitCount
+        versionName = "0.2.0"
 
         buildConfigField("String", "STRAVA_CLIENT_ID", "\"${localProperties.getProperty("strava.clientId", "")}\"")
         buildConfigField("String", "STRAVA_CLIENT_SECRET", "\"${localProperties.getProperty("strava.clientSecret", "")}\"")
+        buildConfigField("String", "GIT_SHA", "\"$gitShortSha\"")
     }
 
     buildTypes {

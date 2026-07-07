@@ -34,6 +34,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import dev.zelenzoom.rowingbridge.BuildConfig
 import dev.zelenzoom.rowingbridge.R
 
 /** Settings screen: theme (applied immediately, no restart) and app language (recreates the Activity via AppCompatDelegate). */
@@ -77,6 +78,20 @@ fun SettingsScreen(
 
             SectionHeader(stringResource(R.string.settings_strava_section))
             StravaSection(stravaAvailable, stravaConnected, onConnectStrava, onDisconnectStrava)
+
+            Spacer(modifier = Modifier.height(24.dp))
+
+            Text(
+                text = stringResource(
+                    R.string.settings_version_format,
+                    BuildConfig.VERSION_NAME,
+                    BuildConfig.VERSION_CODE,
+                    BuildConfig.GIT_SHA,
+                ),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(bottom = 16.dp),
+            )
         }
     }
 }

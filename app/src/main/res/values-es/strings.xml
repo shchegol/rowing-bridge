@@ -87,4 +87,7 @@
     <string name="strava_upload_success">Subido a Strava</string>
     <string name="strava_upload_failed">Error al subir a Strava</string>
     <string name="strava_not_available">Requiere un plan de pago de la API de Strava - aún no configurado</string>
+
+    <!-- About / version -->
+    <string name="settings_version_format">Versión %1$s (compilación %2$d, %3$s)</string>
 </resources>
