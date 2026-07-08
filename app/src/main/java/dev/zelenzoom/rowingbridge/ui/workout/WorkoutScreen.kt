@@ -25,7 +25,6 @@ import androidx.compose.material.icons.filled.BluetoothConnected
 import androidx.compose.material.icons.filled.Bolt
 import androidx.compose.material.icons.filled.DeleteOutline
 import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.FitnessCenter
 import androidx.compose.material.icons.filled.History
 import androidx.compose.material.icons.filled.LocalFireDepartment
 import androidx.compose.material.icons.filled.Pause
@@ -33,9 +32,6 @@ import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Repeat
 import androidx.compose.material.icons.filled.Save
 import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material.icons.filled.Speed
-import androidx.compose.material.icons.filled.Straighten
-import androidx.compose.material.icons.filled.Timer
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -132,12 +128,12 @@ fun WorkoutScreen(
                 ) {
                     Column(modifier = Modifier.padding(20.dp)) {
                         Row(modifier = Modifier.fillMaxWidth()) {
-                            MetricTile(Icons.Filled.FitnessCenter, stringResource(R.string.tile_spm), sample?.strokeRate?.let { "%.1f".format(it) } ?: "--", Modifier.weight(1f))
-                            MetricTile(Icons.Filled.Timer, stringResource(R.string.tile_time), formatElapsed(elapsedSeconds), Modifier.weight(1f))
+                            MetricTile(stringResource(R.string.tile_spm), sample?.strokeRate?.let { "%.1f".format(it) } ?: "--", Modifier.weight(1f))
+                            MetricTile(stringResource(R.string.tile_time), formatElapsed(elapsedSeconds), Modifier.weight(1f))
                         }
                         Row(modifier = Modifier.fillMaxWidth().padding(top = 20.dp)) {
-                            MetricTile(Icons.Filled.Speed, stringResource(R.string.tile_pace), formatPace(sample?.paceSecondsPer500m), Modifier.weight(1f))
-                            MetricTile(Icons.Filled.Straighten, stringResource(R.string.tile_distance), sample?.distanceMeters?.toString() ?: "--", Modifier.weight(1f))
+                            MetricTile(stringResource(R.string.tile_pace), formatPace(sample?.paceSecondsPer500m), Modifier.weight(1f))
+                            MetricTile(stringResource(R.string.tile_distance), sample?.distanceMeters?.toString() ?: "--", Modifier.weight(1f))
                         }
                     }
                 }
@@ -390,15 +386,14 @@ private fun StravaUploadRow(state: StravaUploadState, onUpload: () -> Unit) {
 }
 
 @Composable
-private fun MetricTile(icon: ImageVector, label: String, value: String, modifier: Modifier = Modifier) {
+private fun MetricTile(label: String, value: String, modifier: Modifier = Modifier) {
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {
-        Icon(icon, contentDescription = null, modifier = Modifier.height(18.dp))
         Text(text = label, style = MaterialTheme.typography.labelMedium)
-        Text(text = value, style = MaterialTheme.typography.headlineMedium)
+        Text(text = value, style = MaterialTheme.typography.displaySmall)
     }
 }
 
