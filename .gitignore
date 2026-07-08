@@ -10,3 +10,6 @@ build/
 .cxx
 *.apk
 *.aab
+*.jks
+*.keystore
+keystore.properties

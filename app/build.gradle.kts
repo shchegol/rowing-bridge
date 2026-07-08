@@ -32,6 +32,14 @@ fun runGit(vararg args: String): String = try {
 val gitCommitCount = runGit("rev-list", "--count", "HEAD").toIntOrNull() ?: 1
 val gitShortSha = runGit("rev-parse", "--short", "HEAD").ifBlank { "unknown" }
 
+// Release signing key comes from keystore.properties (gitignored, not committed) -
+// see keystore.properties.example for the format. Without it, assembleRelease
+// falls back to an unsigned build (fine for CI/local checks, not for distribution).
+val keystoreProperties = Properties().apply {
+    val file = rootProject.file("keystore.properties")
+    if (file.exists()) file.inputStream().use { load(it) }
+}
+
 android {
     namespace = "dev.zelenzoom.rowingbridge"
     compileSdk = 35
@@ -48,9 +56,23 @@ android {
         buildConfigField("String", "GIT_SHA", "\"$gitShortSha\"")
     }
 
+    signingConfigs {
+        if (keystoreProperties.getProperty("storeFile") != null) {
+            create("release") {
+                storeFile = rootProject.file(keystoreProperties.getProperty("storeFile"))
+                storePassword = keystoreProperties.getProperty("storePassword")
+                keyAlias = keystoreProperties.getProperty("keyAlias")
+                keyPassword = keystoreProperties.getProperty("keyPassword")
+            }
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
+            if (keystoreProperties.getProperty("storeFile") != null) {
+                signingConfig = signingConfigs.getByName("release")
+            }
         }
     }
 
