@@ -4,6 +4,11 @@
 
 Android app that connects to a BLE FTMS rowing machine (and, separately, a Garmin watch's broadcast heart rate) and writes a real `.FIT` activity file — bypassing a Garmin Connect IQ limitation where Garmin Connect silently discards app-supplied values for standard metrics (distance, cadence, power, etc.) written via `ActivityRecording.Session`/`FitContributor`.
 
+<p align="center">
+  <img src="docs/screenshots/workout-dark.jpg" width="270" alt="Main workout screen, dark theme">
+  <img src="docs/screenshots/workout-light.jpg" width="270" alt="Main workout screen, light theme">
+</p>
+
 ## Features
 
 **Rower connection (BLE FTMS)**
