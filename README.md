@@ -35,6 +35,10 @@ Android app that connects to a BLE FTMS rowing machine (and, separately, a Garmi
 - Light / Dark / System theme, applied instantly without restarting.
 - In-app language override (English / Русский / Español), independent of the phone's system language.
 
+## Tested with
+
+Developed and tested against a [Kneeze TG002B Rowing Machine Z2](https://www.amazon.es/dp/B0C28XPHYX) (sold on Amazon.es under the "Neezee" storefront brand). Any rower implementing the standard Bluetooth FTMS Rower Data characteristic should work, but field availability varies by machine — this one, for example, never sends average stroke rate/pace/power or resistance/MET, which is why the app computes its own averages/maxima instead of trusting the device.
+
 ## Building
 
 Requires Android Studio, JDK 17, and the Android SDK. Open the project and sync Gradle. See `local.properties` for the (optional, currently unused) Strava API credential placeholders.
