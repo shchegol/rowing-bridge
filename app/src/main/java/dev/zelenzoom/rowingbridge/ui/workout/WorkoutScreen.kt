@@ -22,10 +22,15 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.BluetoothSearching
 import androidx.compose.material.icons.filled.Bluetooth
 import androidx.compose.material.icons.filled.BluetoothConnected
+import androidx.compose.material.icons.filled.Bolt
 import androidx.compose.material.icons.filled.DeleteOutline
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FitnessCenter
+import androidx.compose.material.icons.filled.History
+import androidx.compose.material.icons.filled.LocalFireDepartment
 import androidx.compose.material.icons.filled.Pause
 import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.filled.Repeat
 import androidx.compose.material.icons.filled.Save
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Speed
@@ -149,8 +154,10 @@ fun WorkoutScreen(
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.fillMaxWidth().padding(vertical = 6.dp),
                 ) {
+                    Icon(field.icon, contentDescription = null, tint = MaterialTheme.colorScheme.outline, modifier = Modifier.size(22.dp))
+                    Spacer(modifier = Modifier.width(16.dp))
                     Text(text = field.label, style = MaterialTheme.typography.bodyMedium, modifier = Modifier.weight(1f))
-                    Text(text = field.value, style = MaterialTheme.typography.bodyLarge)
+                    Text(text = field.value, style = MaterialTheme.typography.bodyMedium)
                 }
             }
         }
@@ -395,7 +402,7 @@ private fun MetricTile(icon: ImageVector, label: String, value: String, modifier
     }
 }
 
-private data class RawField(val label: String, val value: String)
+private data class RawField(val icon: ImageVector, val label: String, val value: String)
 
 /**
  * Everything worth showing beyond the 4 main tiles (which already cover
@@ -408,11 +415,11 @@ private data class RawField(val label: String, val value: String)
 private fun rawFields(sample: RowerSample?): List<RawField> {
     val notSent = stringResource(R.string.field_not_sent)
     return listOf(
-        RawField(stringResource(R.string.field_heart_rate), sample?.heartRateBpm?.toString() ?: notSent),
-        RawField(stringResource(R.string.field_stroke_count), sample?.strokeCount?.toString() ?: notSent),
-        RawField(stringResource(R.string.field_instant_power), sample?.powerWatts?.toString() ?: notSent),
-        RawField(stringResource(R.string.field_total_energy), sample?.totalEnergyKcal?.let { "%.2f".format(it) } ?: notSent),
-        RawField(stringResource(R.string.field_device_elapsed_time), sample?.elapsedTimeSeconds?.toString() ?: notSent),
+        RawField(Icons.Filled.Favorite, stringResource(R.string.field_heart_rate), sample?.heartRateBpm?.toString() ?: notSent),
+        RawField(Icons.Filled.Repeat, stringResource(R.string.field_stroke_count), sample?.strokeCount?.toString() ?: notSent),
+        RawField(Icons.Filled.Bolt, stringResource(R.string.field_instant_power), sample?.powerWatts?.toString() ?: notSent),
+        RawField(Icons.Filled.LocalFireDepartment, stringResource(R.string.field_total_energy), sample?.totalEnergyKcal?.let { "%.2f".format(it) } ?: notSent),
+        RawField(Icons.Filled.History, stringResource(R.string.field_device_elapsed_time), sample?.elapsedTimeSeconds?.toString() ?: notSent),
     )
 }
 
