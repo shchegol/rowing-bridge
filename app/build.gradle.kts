@@ -49,7 +49,7 @@ android {
         minSdk = 29
         targetSdk = 35
         versionCode = gitCommitCount
-        versionName = "0.2.1"
+        versionName = "0.3.0"
 
         buildConfigField("String", "STRAVA_CLIENT_ID", "\"${localProperties.getProperty("strava.clientId", "")}\"")
         buildConfigField("String", "STRAVA_CLIENT_SECRET", "\"${localProperties.getProperty("strava.clientSecret", "")}\"")
