@@ -57,7 +57,7 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
     val rowerModelOverride: StateFlow<RowerModel?> = _rowerModelOverride.asStateFlow()
 
     fun setRowerModelOverride(model: RowerModel?) {
-        RowerModelPreference.save(application, model)
+        RowerModelPreference.save(getApplication(), model)
         _rowerModelOverride.value = model
     }
 
