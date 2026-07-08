@@ -14,7 +14,6 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowDropDown
-import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.LocalCafe
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -43,7 +42,6 @@ import dev.zelenzoom.rowingbridge.BuildConfig
 import dev.zelenzoom.rowingbridge.R
 import dev.zelenzoom.rowingbridge.ble.RowerModel
 import dev.zelenzoom.rowingbridge.support.openBuyMeACoffeePage
-import dev.zelenzoom.rowingbridge.support.openSponsorsPage
 
 /** Settings screen: theme (applied immediately, no restart) and app language (recreates the Activity via AppCompatDelegate). */
 @OptIn(ExperimentalMaterial3Api::class)
@@ -150,20 +148,9 @@ private fun StravaSection(available: Boolean, connected: Boolean, onConnect: () 
 @Composable
 private fun SupportSection() {
     val context = LocalContext.current
-    Button(
-        onClick = { openSponsorsPage(context) },
-        modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp).height(56.dp),
-        colors = ButtonDefaults.buttonColors(
-            containerColor = MaterialTheme.colorScheme.error,
-            contentColor = Color.White,
-        ),
-    ) {
-        Icon(Icons.Filled.Favorite, contentDescription = null)
-        Spacer(modifier = Modifier.width(8.dp))
-        Text(stringResource(R.string.support_github_sponsors))
-    }
-    // No GitHub account needed, unlike Sponsors above - the more accessible
-    // option for this app's actual audience (rowers, not developers).
+    // Buy Me a Coffee only - doesn't require the supporter to have a GitHub
+    // account, unlike Sponsors, so it's the better fit for this app's actual
+    // audience (rowers, not developers). Sponsors stays linked from README.
     Button(
         onClick = { openBuyMeACoffeePage(context) },
         modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp).height(56.dp),

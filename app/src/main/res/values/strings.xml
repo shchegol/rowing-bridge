@@ -101,7 +101,6 @@
 
     <!-- Support -->
     <string name="settings_support_section">Support</string>
-    <string name="support_github_sponsors">Sponsor on GitHub</string>
     <string name="support_buy_me_a_coffee">Buy Me a Coffee</string>
     <string name="saved_support_prompt">Enjoying Rowing Bridge? Support it on Buy Me a Coffee ❤</string>
 
