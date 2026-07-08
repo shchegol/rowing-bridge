@@ -35,6 +35,10 @@ Android app that connects to a BLE FTMS rowing machine (and, separately, a Garmi
 - Light / Dark / System theme, applied instantly without restarting.
 - In-app language override (English / Русский / Español), independent of the phone's system language.
 
+## Installation
+
+Download the latest `.apk` from the [Releases page](https://github.com/shchegol/rowing-bridge/releases) and install it directly — this app isn't on Google Play, so Android will ask you to confirm installing from an unknown source the first time. Requires Android 10 (API 29) or newer.
+
 ## Tested with
 
 Developed and tested against a [Neeze TG002B Rowing Machine Z2](https://www.amazon.es/dp/B0C28XPHYX) (sold on Amazon.es under the "Neezee" storefront brand). Any rower implementing the standard Bluetooth FTMS Rower Data characteristic should work, but field availability varies by machine — this one, for example, never sends average stroke rate/pace/power or resistance/MET, which is why the app computes its own averages/maxima instead of trusting the device.
@@ -46,3 +50,7 @@ Requires Android Studio, JDK 17, and the Android SDK. Open the project and sync 
 ## Support
 
 If Rowing Bridge is useful to you, consider [sponsoring it on GitHub Sponsors](https://github.com/sponsors/shchegol) ❤ — it's a free, ad-free, one-person side project built to fix a real Garmin Connect IQ limitation, and sponsorships help keep it maintained.
+
+## License
+
+The app's own source code is [MIT licensed](LICENSE). It depends on Garmin's official [FIT SDK](https://developer.garmin.com/fit/overview/) (`com.garmin:fit`) for encoding `.FIT` files, which is distributed under Garmin's own [FIT Protocol License Agreement](https://github.com/garmin/fit-java-sdk/blob/main/LICENSE.txt) — a separate, non-open-source license covering that one dependency.
