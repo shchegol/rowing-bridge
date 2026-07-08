@@ -32,10 +32,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import dev.zelenzoom.rowingbridge.BuildConfig
 import dev.zelenzoom.rowingbridge.R
+import dev.zelenzoom.rowingbridge.support.openSponsorsPage
 
 /** Settings screen: theme (applied immediately, no restart) and app language (recreates the Activity via AppCompatDelegate). */
 @OptIn(ExperimentalMaterial3Api::class)
@@ -81,6 +83,11 @@ fun SettingsScreen(
 
             Spacer(modifier = Modifier.height(24.dp))
 
+            SectionHeader(stringResource(R.string.settings_support_section))
+            SupportSection()
+
+            Spacer(modifier = Modifier.height(24.dp))
+
             Text(
                 text = stringResource(
                     R.string.settings_version_format,
@@ -120,6 +127,17 @@ private fun StravaSection(available: Boolean, connected: Boolean, onConnect: () 
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
         }
+    }
+}
+
+@Composable
+private fun SupportSection() {
+    val context = LocalContext.current
+    OutlinedButton(
+        onClick = { openSponsorsPage(context) },
+        modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
+    ) {
+        Text(stringResource(R.string.support_github_sponsors))
     }
 }
 

@@ -1,5 +1,6 @@
 package dev.zelenzoom.rowingbridge.ui.workout
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -57,6 +58,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -67,6 +69,7 @@ import dev.zelenzoom.rowingbridge.ble.BleConnectionState
 import dev.zelenzoom.rowingbridge.ble.RowerSample
 import dev.zelenzoom.rowingbridge.recording.WorkoutRecording
 import dev.zelenzoom.rowingbridge.recording.WorkoutState
+import dev.zelenzoom.rowingbridge.support.openSponsorsPage
 
 /**
  * Live metrics + recording controls, mirroring garmin-rowing/source/
@@ -234,6 +237,15 @@ fun WorkoutScreen(
                         Spacer(modifier = Modifier.height(16.dp))
                         StravaUploadRow(stravaUploadState, onUploadToStrava)
                     }
+
+                    Spacer(modifier = Modifier.height(16.dp))
+                    val context = LocalContext.current
+                    Text(
+                        text = stringResource(R.string.saved_support_prompt),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier.fillMaxWidth().clickable { openSponsorsPage(context) },
+                    )
                 }
             },
             confirmButton = {

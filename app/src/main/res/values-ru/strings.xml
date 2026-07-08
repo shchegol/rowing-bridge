@@ -88,6 +88,11 @@
     <string name="strava_upload_failed">Не удалось загрузить в Strava</string>
     <string name="strava_not_available">Нужен платный тариф Strava API — пока не подключён</string>
 
+    <!-- Support -->
+    <string name="settings_support_section">Поддержать</string>
+    <string name="support_github_sponsors">❤ Поддержать на GitHub Sponsors</string>
+    <string name="saved_support_prompt">Нравится Rowing Bridge? Поддержите проект на GitHub Sponsors ❤</string>
+
     <!-- About / version -->
     <string name="settings_version_format">Версия %1$s (сборка %2$d, %3$s)</string>
 </resources>

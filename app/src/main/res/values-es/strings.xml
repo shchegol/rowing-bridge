@@ -88,6 +88,11 @@
     <string name="strava_upload_failed">Error al subir a Strava</string>
     <string name="strava_not_available">Requiere un plan de pago de la API de Strava - aún no configurado</string>
 
+    <!-- Support -->
+    <string name="settings_support_section">Apoyo</string>
+    <string name="support_github_sponsors">❤ Apoyar en GitHub Sponsors</string>
+    <string name="saved_support_prompt">¿Te gusta Rowing Bridge? Apoya el proyecto en GitHub Sponsors ❤</string>
+
     <!-- About / version -->
     <string name="settings_version_format">Versión %1$s (compilación %2$d, %3$s)</string>
 </resources>

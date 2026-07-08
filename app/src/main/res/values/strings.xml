@@ -93,6 +93,11 @@
     <string name="strava_upload_failed">Strava upload failed</string>
     <string name="strava_not_available">Requires a paid Strava API plan - not set up yet</string>
 
+    <!-- Support -->
+    <string name="settings_support_section">Support</string>
+    <string name="support_github_sponsors">❤ Sponsor on GitHub</string>
+    <string name="saved_support_prompt">Enjoying Rowing Bridge? Support it on GitHub Sponsors ❤</string>
+
     <!-- About / version -->
     <string name="settings_version_format">Version %1$s (build %2$d, %3$s)</string>
 </resources>
