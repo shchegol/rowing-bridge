@@ -50,6 +50,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -59,6 +60,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -104,6 +106,15 @@ fun WorkoutScreen(
     // LazyColumn content block below, which is a plain LazyListScope lambda
     // - not composable - so it can't call stringResource()-using functions.
     val liveFields = rawFields(sample)
+
+    // Keep the screen on while a workout is active (Recording/Paused) so it
+    // can't lock mid-session - besides being annoying, a locked screen risks
+    // the OS backgrounding the app and interrupting the BLE connection.
+    val view = LocalView.current
+    DisposableEffect(workoutState) {
+        view.keepScreenOn = workoutState != WorkoutState.Idle
+        onDispose { view.keepScreenOn = false }
+    }
 
     Scaffold(
         topBar = { StatusBar(connectionState, heartRateConnectionState, workoutState, sample?.heartRateBpm, onOpenSettings) },
