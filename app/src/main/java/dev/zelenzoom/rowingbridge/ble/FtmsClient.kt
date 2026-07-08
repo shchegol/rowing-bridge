@@ -49,6 +49,7 @@ class FtmsClient(private val context: Context) {
 
     private var gatt: BluetoothGatt? = null
     private var wantsConnection = false
+    private var quirks: RowerQuirks = RowerQuirks()
 
     private val bluetoothManager: BluetoothManager?
         get() = context.getSystemService(BluetoothManager::class.java)
@@ -92,6 +93,8 @@ class FtmsClient(private val context: Context) {
         override fun onScanResult(callbackType: Int, result: ScanResult) {
             bluetoothManager?.adapter?.bluetoothLeScanner?.stopScan(this)
             _connectionState.value = BleConnectionState.Connecting
+            quirks = RowerQuirksRegistry.forDeviceName(result.device.name)
+            Log.d(TAG, "Connecting to '${result.device.name}', quirks: $quirks")
             gatt = result.device.connectGatt(context, false, gattCallback)
         }
 
@@ -141,7 +144,7 @@ class FtmsClient(private val context: Context) {
         override fun onCharacteristicChanged(g: BluetoothGatt, characteristic: BluetoothGattCharacteristic) {
             val bytes = characteristic.value ?: return
             if (characteristic.uuid == ROWER_DATA_UUID) {
-                _samples.tryEmit(RowerDataParser.parse(bytes))
+                _samples.tryEmit(RowerDataParser.parse(bytes, quirks))
             }
         }
 
@@ -151,7 +154,7 @@ class FtmsClient(private val context: Context) {
             value: ByteArray,
         ) {
             if (characteristic.uuid == ROWER_DATA_UUID) {
-                _samples.tryEmit(RowerDataParser.parse(value))
+                _samples.tryEmit(RowerDataParser.parse(value, quirks))
             }
         }
     }

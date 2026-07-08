@@ -11,7 +11,7 @@ package dev.zelenzoom.rowingbridge.ble
  */
 object RowerDataParser {
 
-    fun parse(data: ByteArray): RowerSample {
+    fun parse(data: ByteArray, quirks: RowerQuirks = RowerQuirks()): RowerSample {
         if (data.size < 2) return RowerSample()
 
         fun u8(i: Int) = data[i].toInt() and 0xFF
@@ -113,14 +113,13 @@ object RowerDataParser {
         }
 
         // bit8: Expended Energy - Total(uint16 kcal), PerHour(uint16), PerMin(uint8).
-        // This machine's Total Energy appears to actually be in centikcal, not
-        // whole kcal as the FTMS spec defines (raw 213 matched an expected
-        // ~2 kcal burn for the test session) - scaling by /100 is an inferred,
-        // device-specific correction, not something the spec documents.
+        // Total Energy is scaled per-device via `quirks.totalEnergyScale` (default
+        // 1.0, i.e. trust the spec's whole-kcal definition) - see RowerQuirks.kt
+        // for known deviations confirmed on real hardware.
         if ((flags and 0x0100) != 0) {
             if (i + 1 < data.size) {
                 val v = u16(i)
-                if (v != 0xFFFF) totalEnergy = v / 100.0f
+                if (v != 0xFFFF) totalEnergy = v * quirks.totalEnergyScale
             }
             i += 2
             if (i + 1 < data.size) {
