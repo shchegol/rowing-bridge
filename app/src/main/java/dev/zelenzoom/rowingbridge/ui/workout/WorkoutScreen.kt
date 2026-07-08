@@ -67,7 +67,7 @@ import dev.zelenzoom.rowingbridge.ble.BleConnectionState
 import dev.zelenzoom.rowingbridge.ble.RowerSample
 import dev.zelenzoom.rowingbridge.recording.WorkoutRecording
 import dev.zelenzoom.rowingbridge.recording.WorkoutState
-import dev.zelenzoom.rowingbridge.support.openSponsorsPage
+import dev.zelenzoom.rowingbridge.support.openBuyMeACoffeePage
 
 /**
  * Live metrics + recording controls, mirroring garmin-rowing/source/
@@ -251,7 +251,7 @@ fun WorkoutScreen(
                         text = stringResource(R.string.saved_support_prompt),
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.primary,
-                        modifier = Modifier.fillMaxWidth().clickable { openSponsorsPage(context) },
+                        modifier = Modifier.fillMaxWidth().clickable { openBuyMeACoffeePage(context) },
                     )
                 }
             },

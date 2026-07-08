@@ -15,6 +15,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.LocalCafe
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DropdownMenu
@@ -41,6 +42,7 @@ import androidx.compose.ui.unit.dp
 import dev.zelenzoom.rowingbridge.BuildConfig
 import dev.zelenzoom.rowingbridge.R
 import dev.zelenzoom.rowingbridge.ble.RowerModel
+import dev.zelenzoom.rowingbridge.support.openBuyMeACoffeePage
 import dev.zelenzoom.rowingbridge.support.openSponsorsPage
 
 /** Settings screen: theme (applied immediately, no restart) and app language (recreates the Activity via AppCompatDelegate). */
@@ -159,6 +161,20 @@ private fun SupportSection() {
         Icon(Icons.Filled.Favorite, contentDescription = null)
         Spacer(modifier = Modifier.width(8.dp))
         Text(stringResource(R.string.support_github_sponsors))
+    }
+    // No GitHub account needed, unlike Sponsors above - the more accessible
+    // option for this app's actual audience (rowers, not developers).
+    Button(
+        onClick = { openBuyMeACoffeePage(context) },
+        modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp).height(56.dp),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = MaterialTheme.colorScheme.tertiary,
+            contentColor = Color.White,
+        ),
+    ) {
+        Icon(Icons.Filled.LocalCafe, contentDescription = null)
+        Spacer(modifier = Modifier.width(8.dp))
+        Text(stringResource(R.string.support_buy_me_a_coffee))
     }
 }
 

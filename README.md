@@ -1,6 +1,7 @@
 # Rowing Bridge
 
 [![Sponsor](https://img.shields.io/badge/Sponsor-%E2%9D%A4-db61a2?logo=githubsponsors&logoColor=white)](https://github.com/sponsors/shchegol)
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-%E2%9D%A4-ffdd00?logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/shchegol)
 
 Android app that connects to a BLE FTMS rowing machine (and, separately, a Garmin watch's broadcast heart rate) and writes a real `.FIT` activity file — bypassing a Garmin Connect IQ limitation where Garmin Connect silently discards app-supplied values for standard metrics (distance, cadence, power, etc.) written via `ActivityRecording.Session`/`FitContributor`.
 
@@ -49,7 +50,7 @@ Requires Android Studio, JDK 17, and the Android SDK. Open the project and sync 
 
 ## Support
 
-If Rowing Bridge is useful to you, consider [sponsoring it on GitHub Sponsors](https://github.com/sponsors/shchegol) ❤ — it's a free, ad-free, one-person side project built to fix a real Garmin Connect IQ limitation, and sponsorships help keep it maintained.
+If Rowing Bridge is useful to you, consider supporting it on [GitHub Sponsors](https://github.com/sponsors/shchegol) or [Buy Me a Coffee](https://buymeacoffee.com/shchegol) (no GitHub account needed) ❤ — it's a free, ad-free, one-person side project built to fix a real Garmin Connect IQ limitation, and support helps keep it maintained.
 
 ## License
 
