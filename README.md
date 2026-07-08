@@ -37,7 +37,7 @@ Android app that connects to a BLE FTMS rowing machine (and, separately, a Garmi
 
 ## Tested with
 
-Developed and tested against a [Kneeze TG002B Rowing Machine Z2](https://www.amazon.es/dp/B0C28XPHYX) (sold on Amazon.es under the "Neezee" storefront brand). Any rower implementing the standard Bluetooth FTMS Rower Data characteristic should work, but field availability varies by machine — this one, for example, never sends average stroke rate/pace/power or resistance/MET, which is why the app computes its own averages/maxima instead of trusting the device.
+Developed and tested against a [Neeze TG002B Rowing Machine Z2](https://www.amazon.es/dp/B0C28XPHYX) (sold on Amazon.es under the "Neezee" storefront brand). Any rower implementing the standard Bluetooth FTMS Rower Data characteristic should work, but field availability varies by machine — this one, for example, never sends average stroke rate/pace/power or resistance/MET, which is why the app computes its own averages/maxima instead of trusting the device.
 
 ## Building
 
