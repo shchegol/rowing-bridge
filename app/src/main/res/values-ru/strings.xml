@@ -96,7 +96,7 @@
 
     <!-- Support -->
     <string name="settings_support_section">Поддержать</string>
-    <string name="support_github_sponsors">❤ Поддержать на GitHub Sponsors</string>
+    <string name="support_github_sponsors">Поддержать на GitHub Sponsors</string>
     <string name="saved_support_prompt">Нравится Rowing Bridge? Поддержите проект на GitHub Sponsors ❤</string>
 
     <!-- About / version -->

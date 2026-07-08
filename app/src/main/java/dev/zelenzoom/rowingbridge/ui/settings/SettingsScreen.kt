@@ -10,12 +10,13 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -23,7 +24,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -34,6 +34,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -77,10 +78,13 @@ fun SettingsScreen(
                 .verticalScroll(rememberScrollState())
                 .padding(horizontal = 24.dp),
         ) {
+            SectionHeader(stringResource(R.string.settings_support_section))
+            SupportSection()
+
+            Spacer(modifier = Modifier.height(24.dp))
+
             SectionHeader(stringResource(R.string.settings_theme_section))
-            RadioRow(stringResource(R.string.theme_system), themeMode == ThemeMode.SYSTEM) { onThemeModeChange(ThemeMode.SYSTEM) }
-            RadioRow(stringResource(R.string.theme_light), themeMode == ThemeMode.LIGHT) { onThemeModeChange(ThemeMode.LIGHT) }
-            RadioRow(stringResource(R.string.theme_dark), themeMode == ThemeMode.DARK) { onThemeModeChange(ThemeMode.DARK) }
+            ThemeSelect(themeMode, onThemeModeChange)
 
             Spacer(modifier = Modifier.height(24.dp))
 
@@ -96,11 +100,6 @@ fun SettingsScreen(
 
             SectionHeader(stringResource(R.string.settings_strava_section))
             StravaSection(stravaAvailable, stravaConnected, onConnectStrava, onDisconnectStrava)
-
-            Spacer(modifier = Modifier.height(24.dp))
-
-            SectionHeader(stringResource(R.string.settings_support_section))
-            SupportSection()
 
             Spacer(modifier = Modifier.height(24.dp))
 
@@ -124,7 +123,7 @@ private fun StravaSection(available: Boolean, connected: Boolean, onConnect: () 
     if (connected) {
         Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp)) {
             Text(stringResource(R.string.strava_connected), modifier = Modifier.weight(1f))
-            OutlinedButton(onClick = onDisconnect) {
+            OutlinedButton(onClick = onDisconnect, modifier = Modifier.height(56.dp)) {
                 Text(stringResource(R.string.strava_disconnect))
             }
         }
@@ -132,7 +131,7 @@ private fun StravaSection(available: Boolean, connected: Boolean, onConnect: () 
         Button(
             onClick = onConnect,
             enabled = available,
-            modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
+            modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp).height(56.dp),
         ) {
             Text(stringResource(R.string.strava_connect))
         }
@@ -149,10 +148,16 @@ private fun StravaSection(available: Boolean, connected: Boolean, onConnect: () 
 @Composable
 private fun SupportSection() {
     val context = LocalContext.current
-    OutlinedButton(
+    Button(
         onClick = { openSponsorsPage(context) },
-        modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
+        modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp).height(56.dp),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = MaterialTheme.colorScheme.error,
+            contentColor = Color.White,
+        ),
     ) {
+        Icon(Icons.Filled.Favorite, contentDescription = null)
+        Spacer(modifier = Modifier.width(8.dp))
         Text(stringResource(R.string.support_github_sponsors))
     }
 }
@@ -167,17 +172,33 @@ private fun SectionHeader(text: String) {
 }
 
 @Composable
-private fun RadioRow(label: String, selected: Boolean, onClick: () -> Unit) {
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .fillMaxWidth()
-            .selectable(selected = selected, onClick = onClick)
-            .padding(vertical = 8.dp),
-    ) {
-        RadioButton(selected = selected, onClick = onClick)
-        Spacer(modifier = Modifier.width(8.dp))
-        Text(label)
+private fun ThemeSelect(current: ThemeMode, onChange: (ThemeMode) -> Unit) {
+    var expanded by remember { mutableStateOf(false) }
+    val options = listOf(
+        ThemeMode.SYSTEM to stringResource(R.string.theme_system),
+        ThemeMode.LIGHT to stringResource(R.string.theme_light),
+        ThemeMode.DARK to stringResource(R.string.theme_dark),
+    )
+    val currentLabel = options.firstOrNull { it.first == current }?.second ?: options[0].second
+
+    Box(modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp)) {
+        OutlinedButton(onClick = { expanded = true }, modifier = Modifier.fillMaxWidth().height(56.dp)) {
+            Text(currentLabel, modifier = Modifier.weight(1f))
+            Icon(Icons.Filled.ArrowDropDown, contentDescription = null)
+        }
+        DropdownMenu(
+            expanded = expanded,
+            onDismissRequest = { expanded = false },
+            modifier = Modifier.fillMaxWidth(),
+        ) {
+            options.forEach { (mode, label) ->
+                DropdownMenuItem(
+                    text = { Text(label) },
+                    onClick = { onChange(mode); expanded = false },
+                    modifier = Modifier.fillMaxWidth().height(56.dp),
+                )
+            }
+        }
     }
 }
 
