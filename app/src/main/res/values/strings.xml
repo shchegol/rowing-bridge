@@ -82,6 +82,12 @@
     <string name="language_russian" translatable="false">Русский</string>
     <string name="language_spanish" translatable="false">Español</string>
 
+    <!-- Rower model -->
+    <string name="settings_rower_model_section">Rower model</string>
+    <string name="rower_model_auto">Auto-detect (recommended)</string>
+    <string name="rower_model_generic">Generic FTMS rower</string>
+    <string name="rower_model_neeze_tg002b" translatable="false">Neeze TG002B / Z2</string>
+
     <!-- Strava -->
     <string name="settings_strava_section">Strava</string>
     <string name="strava_connect">Connect to Strava</string>

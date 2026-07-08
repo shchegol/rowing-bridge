@@ -37,6 +37,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import dev.zelenzoom.rowingbridge.BuildConfig
 import dev.zelenzoom.rowingbridge.R
+import dev.zelenzoom.rowingbridge.ble.RowerModel
 import dev.zelenzoom.rowingbridge.support.openSponsorsPage
 
 /** Settings screen: theme (applied immediately, no restart) and app language (recreates the Activity via AppCompatDelegate). */
@@ -47,6 +48,8 @@ fun SettingsScreen(
     onThemeModeChange: (ThemeMode) -> Unit,
     currentLanguageTag: String?,
     onLanguageChange: (String?) -> Unit,
+    rowerModelOverride: RowerModel?,
+    onRowerModelChange: (RowerModel?) -> Unit,
     stravaAvailable: Boolean,
     stravaConnected: Boolean,
     onConnectStrava: () -> Unit,
@@ -75,6 +78,11 @@ fun SettingsScreen(
 
             SectionHeader(stringResource(R.string.settings_language_section))
             LanguageSelect(currentLanguageTag, onLanguageChange)
+
+            Spacer(modifier = Modifier.height(24.dp))
+
+            SectionHeader(stringResource(R.string.settings_rower_model_section))
+            RowerModelSelect(rowerModelOverride, onRowerModelChange)
 
             Spacer(modifier = Modifier.height(24.dp))
 
@@ -164,6 +172,46 @@ private fun RadioRow(label: String, selected: Boolean, onClick: () -> Unit) {
         Text(label)
     }
 }
+
+/**
+ * Manual fallback for when BLE-name auto-detection (RowerQuirksRegistry)
+ * doesn't match the connected rower - null means "auto-detect" (default).
+ */
+@Composable
+private fun RowerModelSelect(current: RowerModel?, onChange: (RowerModel?) -> Unit) {
+    var expanded by remember { mutableStateOf(false) }
+    val options = listOf(null to stringResource(R.string.rower_model_auto)) +
+        RowerModel.entries.map { it to rowerModelLabel(it) }
+    val currentLabel = options.firstOrNull { it.first == current }?.second ?: options[0].second
+
+    Box(modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp)) {
+        OutlinedButton(onClick = { expanded = true }, modifier = Modifier.fillMaxWidth().height(56.dp)) {
+            Text(currentLabel, modifier = Modifier.weight(1f))
+            Icon(Icons.Filled.ArrowDropDown, contentDescription = null)
+        }
+        DropdownMenu(
+            expanded = expanded,
+            onDismissRequest = { expanded = false },
+            modifier = Modifier.fillMaxWidth(),
+        ) {
+            options.forEach { (model, label) ->
+                DropdownMenuItem(
+                    text = { Text(label) },
+                    onClick = { onChange(model); expanded = false },
+                    modifier = Modifier.fillMaxWidth().height(56.dp),
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun rowerModelLabel(model: RowerModel): String = stringResource(
+    when (model) {
+        RowerModel.GENERIC -> R.string.rower_model_generic
+        RowerModel.NEEZE_TG002B -> R.string.rower_model_neeze_tg002b
+    },
+)
 
 /** Compact select/dropdown (not a radio list) - stays small as more languages/settings get added later. */
 @Composable

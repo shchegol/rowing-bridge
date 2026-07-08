@@ -77,6 +77,12 @@
     <string name="settings_language_section">Язык</string>
     <string name="language_system">Как в системе</string>
 
+    <!-- Rower model -->
+    <string name="settings_rower_model_section">Модель тренажёра</string>
+    <string name="rower_model_auto">Определять автоматически (рекомендуется)</string>
+    <string name="rower_model_generic">Обычный тренажёр FTMS</string>
+    <string name="rower_model_neeze_tg002b" translatable="false">Neeze TG002B / Z2</string>
+
     <!-- Strava -->
     <string name="settings_strava_section">Strava</string>
     <string name="strava_connect">Подключить Strava</string>

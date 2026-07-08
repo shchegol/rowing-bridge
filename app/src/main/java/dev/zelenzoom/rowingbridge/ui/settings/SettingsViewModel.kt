@@ -8,6 +8,8 @@ import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import dev.zelenzoom.rowingbridge.BuildConfig
+import dev.zelenzoom.rowingbridge.ble.RowerModel
+import dev.zelenzoom.rowingbridge.ble.RowerModelPreference
 import dev.zelenzoom.rowingbridge.strava.StravaAuthManager
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -48,6 +50,15 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
     fun setThemeMode(mode: ThemeMode) {
         prefs.edit().putString(KEY_THEME_MODE, mode.name).apply()
         _themeMode.value = mode
+    }
+
+    /** Null means "auto-detect by BLE device name" (see RowerQuirksRegistry). */
+    private val _rowerModelOverride = MutableStateFlow(RowerModelPreference.load(application))
+    val rowerModelOverride: StateFlow<RowerModel?> = _rowerModelOverride.asStateFlow()
+
+    fun setRowerModelOverride(model: RowerModel?) {
+        RowerModelPreference.save(application, model)
+        _rowerModelOverride.value = model
     }
 
     /** Current app-language override tag (e.g. "ru"), or null for "follow system". */

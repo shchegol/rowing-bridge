@@ -93,8 +93,9 @@ class FtmsClient(private val context: Context) {
         override fun onScanResult(callbackType: Int, result: ScanResult) {
             bluetoothManager?.adapter?.bluetoothLeScanner?.stopScan(this)
             _connectionState.value = BleConnectionState.Connecting
-            quirks = RowerQuirksRegistry.forDeviceName(result.device.name)
-            Log.d(TAG, "Connecting to '${result.device.name}', quirks: $quirks")
+            val model = RowerModelPreference.load(context) ?: RowerQuirksRegistry.detectModel(result.device.name)
+            quirks = model.quirks
+            Log.d(TAG, "Connecting to '${result.device.name}', model=$model, quirks=$quirks")
             gatt = result.device.connectGatt(context, false, gattCallback)
         }
 

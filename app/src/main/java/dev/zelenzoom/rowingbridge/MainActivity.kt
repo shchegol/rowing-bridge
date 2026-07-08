@@ -100,11 +100,14 @@ class MainActivity : AppCompatActivity() {
                         }
                         composable("settings") {
                             val stravaConnected by settingsViewModel.stravaConnected.collectAsState()
+                            val rowerModelOverride by settingsViewModel.rowerModelOverride.collectAsState()
                             SettingsScreen(
                                 themeMode = themeMode,
                                 onThemeModeChange = settingsViewModel::setThemeMode,
                                 currentLanguageTag = settingsViewModel.currentLanguageTag(),
                                 onLanguageChange = settingsViewModel::setLanguageTag,
+                                rowerModelOverride = rowerModelOverride,
+                                onRowerModelChange = settingsViewModel::setRowerModelOverride,
                                 stravaAvailable = settingsViewModel.stravaAvailable,
                                 stravaConnected = stravaConnected,
                                 onConnectStrava = settingsViewModel::connectStrava,

@@ -77,6 +77,12 @@
     <string name="settings_language_section">Idioma</string>
     <string name="language_system">Predeterminado del sistema</string>
 
+    <!-- Rower model -->
+    <string name="settings_rower_model_section">Modelo de máquina de remo</string>
+    <string name="rower_model_auto">Detección automática (recomendado)</string>
+    <string name="rower_model_generic">Máquina FTMS genérica</string>
+    <string name="rower_model_neeze_tg002b" translatable="false">Neeze TG002B / Z2</string>
+
     <!-- Strava -->
     <string name="settings_strava_section">Strava</string>
     <string name="strava_connect">Conectar con Strava</string>
